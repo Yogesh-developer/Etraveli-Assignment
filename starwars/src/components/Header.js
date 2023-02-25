@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import "../styles/Header.css";
 import Dropwdown from "./Dropdown";
 export default function Header() {
-  const [toggleDropDown, setToggleDropDown] = useState(true);
+  const [toggleDropDown, setToggleDropDown] = useState(false);
+  function toggle() {
+    console.log("deafult");
+    setToggleDropDown((prevState) => !prevState);
+  }
   return (
     <div className="header">
       <div className="sort-button">
         <button
-          type="submit"
-          onSubmit={() => {
-            setToggleDropDown(true);
+          onClick={() => {
+            toggle();
           }}
         >
           Sort By
