@@ -1,23 +1,65 @@
 import React, { useState } from "react";
 import "../styles/Header.css";
 import Dropwdown from "./Dropdown";
-export default function Header() {
+import sort from "../assets/img/icons8-sort-24.png";
+
+export default function Header({ state, updateState }) {
   const [toggleDropDown, setToggleDropDown] = useState(false);
-  function toggle() {
-    console.log("deafult");
+  const onChangeHandler = (event) => {
+    event.preventDefault();
+    const filterData = state.data.filter((list) =>
+      list.title.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    updateState({ data: state.data, filteredData: filterData });
+  };
+  const toggle = () => {
     setToggleDropDown((prevState) => !prevState);
-  }
+  };
+  const sortData = (sortBy) => {
+    if (sortBy === "Name") {
+      const sortDataName = state.filteredData.sort((a, b) =>
+        a.title > b.title ? 1 : -1
+      );
+      updateState({ data: state.data, filteredData: sortDataName });
+    } else if (sortBy === "Episodes") {
+      const sortDataEpisode = state.filteredData.sort(
+        (a, b) => a.episode_id - b.episode_id
+      );
+      updateState({ data: state.data, filteredData: sortDataEpisode });
+    } else {
+      const sortdataYear = state.filteredData.sort((a, b) => {
+        const year1 = new Date(a.release_date).getFullYear();
+        const year2 = new Date(b.release_date).getFullYear();
+        return year1 - year2;
+      });
+      updateState({ data: state.data, filteredData: sortdataYear });
+    }
+  };
   return (
     <div className="header">
       <div className="sort-button">
         <button
+          className="submit-btn"
           onClick={() => {
             toggle();
           }}
         >
           Sort By
         </button>
-        {toggleDropDown ? <Dropwdown /> : ""}
+        <button
+          className="submit-btn-icon"
+          onClick={() => {
+            toggle();
+          }}
+        >
+          <img src={sort} alt="sort" />
+        </button>
+
+        {toggleDropDown ? (
+          <Dropwdown toggleDropdown={toggle} sortData={sortData} />
+        ) : (
+          ""
+        )}
       </div>
       <div className="input-search">
         <svg
@@ -31,7 +73,11 @@ export default function Header() {
             fill="#707070"
           />
         </svg>
-        <input type="search" placeholder="Type to search..." />
+        <input
+          type="search"
+          onChange={(event) => onChangeHandler(event)}
+          placeholder="Type to search..."
+        />
       </div>
     </div>
   );

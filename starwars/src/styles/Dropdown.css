@@ -20,13 +20,17 @@
 }
 
 .list {
-  margin-left: 10px;
   padding: 10px 25px;
   text-align: left;
   border-bottom: 1px solid #babfc4;
   cursor: pointer;
 }
-
-.list:hover {
+.list-onclick {
   background-color: rgba(225, 236, 244, 1);
+}
+.list:hover {
+  background-color: rgba(225, 236, 244, 0.3);
+}
+.close-btn {
+  cursor: pointer;
 }

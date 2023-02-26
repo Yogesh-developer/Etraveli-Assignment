@@ -5,16 +5,16 @@
   flex-wrap: wrap;
   height: 500px;
   background-color: #ffffff;
-  margin: 10px;
   width: 100%;
+  margin-top: 10px;
+  box-sizing: border-box;
 }
 
 .movie-list {
-  width: 45%;
+  width: 48%;
 }
 .divider {
   width: 1px;
-  margin: 0px 5px;
   background: lightgrey;
 }
 .list-item {
@@ -24,15 +24,17 @@
   height: 40px;
   border: 1px solid lightgrey;
   border-radius: 4px;
-  margin: 5px;
-  padding: 10px 20px;
+  margin: 10px;
+  padding: 10px 10px;
   cursor: pointer;
-  text-align: left;
   flex-wrap: wrap;
 }
+.div-click-color {
+  background-color: rgba(225, 236, 244, 1);
+}
 .movie-details {
-  width: 45%;
-  margin: 20px;
+  width: 48%;
+  margin: 10px;
 }
 .director {
   padding: 10px 20px;
@@ -44,13 +46,14 @@
 @media only screen and (max-width: 800px) {
   .movie-list {
     width: 100% !important;
-    margin: auto;
+    margin: 10px;
   }
   .divider {
     width: 0;
   }
   .movie-details {
-    margin: auto;
+    margin: 10px;
     width: 100%;
+    text-align: center;
   }
 }
