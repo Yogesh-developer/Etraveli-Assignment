@@ -19,7 +19,7 @@ export default function MovieDetails({ state, updateState }) {
   }, [state.filteredData]);
   return (
     <div className="movie-info">
-      <div className="movie-list">
+      <div className="movie-list" data-testid="movies_list">
         {state.data.length === 0 ? (
           <Shimmer />
         ) : state.filteredData.length === 0 ? (
@@ -27,6 +27,7 @@ export default function MovieDetails({ state, updateState }) {
         ) : (
           state.filteredData.map((item) => (
             <div
+              data-testid="list-item"
               className={
                 item.episode_id === clickDiv
                   ? "list-item div-click-color"
@@ -51,7 +52,9 @@ export default function MovieDetails({ state, updateState }) {
         ) : (
           <>
             <div className="details">{movieDetails[0].opening_crawl}</div>
-            <div className="director">Director: {movieDetails[0].director}</div>
+            <div className="director" data-testid="director">
+              Director: {movieDetails[0].director}
+            </div>
           </>
         )}
       </div>

@@ -4,14 +4,15 @@ import "../styles/Shimmer.css";
 export default function Shimmer() {
   return (
     <>
-      <div className="shimmer-movie-list"></div>
-      <div className="shimmer-movie-list"></div>
-      <div className="shimmer-movie-list"></div>
-      <div className="shimmer-movie-list"></div>
-      <div className="shimmer-movie-list"></div>
-      <div className="shimmer-movie-list"></div>
-      <div className="shimmer-movie-list"></div>
-      <div className="shimmer-movie-list"></div>
+      {Array(10)
+        .fill("")
+        .map((e, index) => (
+          <div
+            key={index}
+            data-testid="shimmer"
+            className="shimmer-movie-list"
+          ></div>
+        ))}
     </>
   );
 }

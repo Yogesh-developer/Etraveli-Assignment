@@ -15,7 +15,7 @@ export default function Dropwdown(props) {
     props.sortData(sortBy);
   };
   return (
-    <div className="dropdown">
+    <div className="dropdown" data-testid="dropdown">
       <div className="flex">
         <h5>Sort By</h5>
         <img

@@ -48,6 +48,7 @@ export default function Header({ state, updateState }) {
         </button>
         <button
           className="submit-btn-icon"
+          test-dataid="button"
           onClick={() => {
             toggle();
           }}
