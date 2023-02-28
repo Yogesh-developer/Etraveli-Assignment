@@ -6,24 +6,27 @@ export default function MovieDetails({ state, updateState }) {
   const [movieDetails, setMovieDetails] = useState([]);
   const [clickDiv, setClickDiv] = useState("");
 
+  // Showing the movie details on clicking
   function movieDetailsSet(episode_id) {
     const data = state.filteredData.filter(
       (item) => item.episode_id === episode_id
     );
     setMovieDetails(data);
-    setClickDiv(episode_id);
+    setClickDiv(episode_id); // For displying active div when its clicked
   }
+
   useEffect(() => {
-    setMovieDetails([]);
+    setMovieDetails([]); // after the filter it will null the movie details
     setClickDiv("");
   }, [state.filteredData]);
+
   return (
     <div className="movie-info">
       <div className="movie-list" data-testid="movies_list">
         {state.data.length === 0 ? (
           <Shimmer />
         ) : state.filteredData.length === 0 ? (
-          <h2>Result Not Found</h2>
+          "Result Not Found"
         ) : (
           state.filteredData.map((item) => (
             <div
@@ -45,7 +48,9 @@ export default function MovieDetails({ state, updateState }) {
           ))
         )}
       </div>
+
       <div className="divider"></div>
+
       <div className="movie-details">
         {movieDetails.length === 0 ? (
           "No Movie Selected"

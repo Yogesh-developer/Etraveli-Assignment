@@ -5,6 +5,8 @@ import sort from "../assets/img/icons8-sort-24.png";
 
 export default function Header({ state, updateState }) {
   const [toggleDropDown, setToggleDropDown] = useState(false);
+
+  //it will filter the data on the basis of search
   const onChangeHandler = (event) => {
     event.preventDefault();
     const filterData = state.data.filter((list) =>
@@ -12,9 +14,12 @@ export default function Header({ state, updateState }) {
     );
     updateState({ data: state.data, filteredData: filterData });
   };
+  // toggle the dropdown
   const toggle = () => {
     setToggleDropDown((prevState) => !prevState);
   };
+
+  // it will sort the data by input from the Dopdown Component
   const sortData = (sortBy) => {
     if (sortBy === "Name") {
       const sortDataName = state.filteredData.sort((a, b) =>
@@ -35,6 +40,7 @@ export default function Header({ state, updateState }) {
       updateState({ data: state.data, filteredData: sortdataYear });
     }
   };
+
   return (
     <div className="header">
       <div className="sort-button">

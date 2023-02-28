@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { FILTER_DATA, MOVIE_LIST_DATA } from "../mock/data";
 import Header from "../components/Header";
 import MovieDetails from "../components/MovieDetails";
+import Dropwdown from "../components/Dropdown";
 
 describe("Header component unit case", () => {
   const state = {
@@ -82,5 +83,47 @@ describe("Header component unit case", () => {
     expect(screen.queryByText("Episodes")).toBeNull();
     expect(screen.queryByText("Name")).toBeNull();
     expect(screen.queryByText("Year")).toBeNull();
+  });
+
+  it("should sort data by name when 'Name' is clicked", () => {
+    const updateState = jest.fn();
+    render(<Header state={state} updateState={updateState} />);
+    const sortDataName = state.filteredData.sort((a, b) =>
+      a.title > b.title ? 1 : -1
+    );
+    fireEvent.click(screen.getByText("Sort By"));
+    fireEvent.click(screen.getByText("Name"));
+    expect(updateState).toHaveBeenCalledWith({
+      data: state.data,
+      filteredData: sortDataName,
+    });
+  });
+  it("should sort data by name when 'Episodes' is clicked", () => {
+    const updateState = jest.fn();
+    render(<Header state={state} updateState={updateState} />);
+    const sortDataEpisode = state.filteredData.sort(
+      (a, b) => a.episode_id - b.episode_id
+    );
+    fireEvent.click(screen.getByText("Sort By"));
+    fireEvent.click(screen.getByText("Episodes"));
+    expect(updateState).toHaveBeenCalledWith({
+      data: state.data,
+      filteredData: sortDataEpisode,
+    });
+  });
+  it("should sort data by name when 'Year' is clicked", () => {
+    const updateState = jest.fn();
+    render(<Header state={state} updateState={updateState} />);
+    const sortdataYear = state.filteredData.sort((a, b) => {
+      const year1 = new Date(a.release_date).getFullYear();
+      const year2 = new Date(b.release_date).getFullYear();
+      return year1 - year2;
+    });
+    fireEvent.click(screen.getByText("Sort By"));
+    fireEvent.click(screen.getByText("Year"));
+    expect(updateState).toHaveBeenCalledWith({
+      data: state.data,
+      filteredData: sortdataYear,
+    });
   });
 });

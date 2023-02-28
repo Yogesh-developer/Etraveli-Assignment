@@ -8,11 +8,11 @@ describe("Header component unit case", () => {
       json: jest.fn().mockResolvedValue(MOVIE_LIST_DATA),
     });
     render(<Body />);
-    // wait for the API call to complete and the data to be displayed
+
     await waitFor(() => {
       expect(screen.getByText("Revenge of the Sith")).toBeInTheDocument();
     });
-    // check that the API was called with the correct URL
+
     expect(global.fetch).toHaveBeenCalledTimes(1);
     expect(global.fetch).toHaveBeenCalledWith(
       "https://swapi.dev/api/films/?format=json"

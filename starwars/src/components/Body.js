@@ -5,17 +5,23 @@ import MovieDetails from "./MovieDetails";
 
 export default function Body() {
   const [apiData, setApiData] = useState({ data: [], filteredData: [] });
+
+  // fetching movie api
   async function getApiCall() {
     const response = await fetch(API_LINK);
     const data = await response.json();
     setApiData({ data: data.results, filteredData: data.results });
   }
+
+  // updating the data
   const updateState = (newState) => {
     setApiData(newState);
   };
+
   useEffect(() => {
     getApiCall();
   }, []);
+
   return (
     <>
       <Header state={apiData} updateState={updateState} />

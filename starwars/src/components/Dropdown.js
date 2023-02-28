@@ -5,12 +5,13 @@ import close from "../assets/img/icons8-close-16.png";
 export default function Dropwdown(props) {
   const [onClicklist, setOnlClick] = useState("");
 
+  // Dropdown toggle functionality
   const togggleDropdown = () => {
     props.toggleDropdown();
   };
 
-  const sortData = (event, sortBy) => {
-    event.preventDefault();
+  // it will pass the value to parent component for sorting (ex: name,episode,year)
+  const sortedData = (sortBy) => {
     setOnlClick(sortBy);
     props.sortData(sortBy);
   };
@@ -31,7 +32,7 @@ export default function Dropwdown(props) {
       <div
         className={onClicklist === "Episodes" ? "list list-onclick" : "list"}
         onClick={(event) => {
-          sortData(event, "Episodes");
+          sortedData("Episodes");
         }}
       >
         Episodes
@@ -39,7 +40,7 @@ export default function Dropwdown(props) {
       <div
         className={onClicklist === "Name" ? "list list-onclick" : "list"}
         onClick={(event) => {
-          sortData(event, "Name");
+          sortedData("Name");
         }}
       >
         Name
@@ -47,7 +48,7 @@ export default function Dropwdown(props) {
       <div
         className={onClicklist === "Year" ? "list list-onclick" : "list"}
         onClick={(event) => {
-          sortData(event, "Year");
+          sortedData("Year");
         }}
       >
         Year
