@@ -2,7 +2,7 @@
 
 # Overview:
 
-This repository contains the source code for the Header, MovieDetails, and Dropdown components for a React application. The Header component provides a search input field and a dropdown for sorting movies based on different criteria. The MovieDetails component displays the details of a movie such as its title, release date, and opening crawl. The Dropdown component provides a dropdown menu for sorting movies based on different criteria.
+This repository contains the source code for the React app that displays a list of Star Wars movies and allows users to search and sort the list. it contais the Header, MovieDetails, and Dropdown components for a React application. The Header component provides a search input field and a dropdown for sorting movies based on different criteria. The MovieDetails component displays the details of a movie such as its title, release date, and opening crawl. The Dropdown component provides a dropdown menu for sorting movies based on different criteria.
 
 # Installation:
 1. Clone the repository using the command 'git clone https://github.com/Yogesh-developer/Etraveli-Assignment.git'
