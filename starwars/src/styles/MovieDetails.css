@@ -34,28 +34,85 @@
 }
 .movie-details {
   width: 48%;
-  margin: 10px;
+}
+.movie-details-container {
+  margin: auto;
+  width: 90%;
+  margin-bottom: 20px;
 }
 .director {
-  padding: 10px 20px;
+  padding: 10px 0px;
 }
 .details {
-  padding: 10px 20px;
+  padding: 10px 0px;
+}
+.people {
+  height: 40px;
+  border: 1px solid lightgrey;
+  padding: 5px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+.dropdown-details {
+  height: 240px;
+}
+.span-left {
+  float: left;
+}
+.span-right {
+  float: right;
 }
 
+.card-list {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  width: 100%;
+}
+.card {
+  flex: 0 0 100px;
+  margin: 5px;
+  height: 140px;
+  width: 100%;
+  border: 1px solid lightgray;
+  display: flex;
+  border-radius: 4px;
+  align-items: center;
+  flex-direction: column;
+}
+.card img {
+  text-align: center;
+}
+.card h6 {
+  margin: auto;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 15px;
+  background: rgba(225, 236, 244, 1);
+  width: 2px !important;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  width: 2px !important;
+  background: lightgray;
+}
 @media only screen and (max-width: 800px) {
+  .divider {
+    display: none;
+  }
   .movie-list {
     width: 100% !important;
     margin: 10px;
     font-size: 14px;
   }
-  .divider {
-    width: 0;
-  }
   .movie-details {
-    margin: 10px;
     width: 100%;
-    text-align: center;
   }
 }
 
@@ -68,12 +125,10 @@
   .list-item {
     height: max-content;
   }
-  .divider {
-    width: 0;
-  }
   .movie-details {
-    margin: 10px;
     width: 100%;
-    text-align: center;
+  }
+  .divider {
+    display: none;
   }
 }
