@@ -7,6 +7,7 @@ This repository contains the source code for the React app that displays a list 
 # Installation:
 1. Clone the repository using the command 'git clone https://github.com/Yogesh-developer/Etraveli-Assignment.git'
 2. Run 'npm install' to install the required dependencies.
+3. Deployed on Netlify link : https://starwar-movie-list.netlify.app/
 
 # Usage:
 1. To use the Header component, import it into your React application and pass the 'state' and 'updateState' props. The 'state' prop should contain the movie data, while 'updateState' should contain a function to update the state.
